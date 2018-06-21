@@ -28,9 +28,6 @@ int main ()
       }
    }
 
-
-
-
    //For clusters
    for(int i = 0; i < NCaloLayer2ClustersPerPhi ; i++){
       for(int j = 0; j < NCaloLayer2Phi_in; j++){
@@ -39,7 +36,6 @@ int main ()
 	    ClusterET_in[i][j][k] = 0;
 	    Cluster_TowerID_in[i][j][k] = 9;
 	    Cluster_EtaPhi_in[i][j][k] = 7;
-
 
 	 }
       }
@@ -65,7 +61,6 @@ int main ()
 	    ClusterET_out[i][j][k] = 0;
 	    Cluster_TowerID_out[i][j][k] = 0;
 	    Cluster_EtaPhi_out[i][j][k] = 0;
-
 
 	 }
       }
@@ -93,8 +88,6 @@ int main ()
 
    cout << ClusterET_out[1][2][0] << "\t" <<  Cluster_TowerID_out[1][2][0]  <<"\t"<<  Cluster_EtaPhi_out[1][2][0] << endl;
 
-
-
    for(int i = 0; i < NCaloLayer2ClustersPerPhi ; i++){
       for(int j = 0; j < NCaloLayer2Phi_out; j++){
 	 for(int k = 0; k < EtaDirections; k++){
@@ -102,11 +95,9 @@ int main ()
 	    cout << ClusterET_out << "\t" <<  Cluster_TowerID_out  <<"\t"<<  Cluster_EtaPhi_out << endl;
 	    cout << ClusterET_out[i][j][k] << "\t" <<  Cluster_TowerID_out[i][j][k]  <<"\t"<<  Cluster_EtaPhi_out[i][j][k] << endl;
 
-
 	 }
       }
    }
-
 
    return 0;
 }
