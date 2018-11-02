@@ -316,7 +316,7 @@ bool merge_acrossphi(uint16_t peakEta[NClustersPerPhi][NCaloLayer2Phi],
 
       int nPhi = -1;
       if(preMergepeakPhi[nClus][tPhi] == 0 && tPhi != 0) nPhi = tPhi - 1;
-      if(preMergepeakPhi[nClus][tPhi] == NCaloLayer1Phi && tPhi != 27 ) nPhi = tPhi + 1;
+      if(preMergepeakPhi[nClus][tPhi] == NCaloLayer1Phi && tPhi != NCaloLayer2Phi-1 ) nPhi = tPhi + 1;
 
       //      std::cout<<"nClus: "<<nClus<<" tPhi:"<<tPhi<<" preMergepeakPhi[nClus][tPhi]: "<<preMergepeakPhi[nClus][tPhi]<<" nPhi"<<nPhi<<" preMergeclusterET[nClus][tPhi]:"<<preMergeclusterET[nClus][tPhi]<<" preMergeclusterET[nClus][nPhi]"<<preMergeclusterET[nClus][nPhi]<<std::endl;
 	    
