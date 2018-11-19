@@ -22,7 +22,7 @@ bool GCT(uint16_t peakEta_top[NClustersPerPhi][NCaloLayer2Phi],
          uint16_t outtowerPhi_bot[NClustersPerPhi][NCaloLayer2Phi],
          uint16_t outClusterET_bot[NClustersPerPhi][NCaloLayer2Phi])
 {
-#pragma HLS PIPELINE II=8
+#pragma HLS PIPELINE II=6
 #pragma HLS ARRAY_PARTITION variable=peakEta_top complete dim=0
 #pragma HLS ARRAY_PARTITION variable=peakPhi_top complete dim=0
 #pragma HLS ARRAY_PARTITION variable=towerEta_top complete dim=0
@@ -167,7 +167,7 @@ bool merge_acrosseta(uint16_t peakEta_t[NClustersPerPhi][NCaloLayer2Phi],
 		     )
 {
 
-#pragma HLS PIPELINE II=8
+#pragma HLS PIPELINE II=6
 #pragma HLS ARRAY_PARTITION variable=peakEta_t complete dim=0
 #pragma HLS ARRAY_PARTITION variable=peakPhi_t complete dim=0
 #pragma HLS ARRAY_PARTITION variable=ClusterET_t complete dim=0
@@ -263,7 +263,7 @@ bool merge_acrossphi(uint16_t peakEta[NClustersPerPhi][NCaloLayer2Phi],
 
 {
 
-#pragma HLS PIPELINE II=8
+#pragma HLS PIPELINE II=6
 #pragma HLS ARRAY_PARTITION variable=peakEta complete dim=0
 #pragma HLS ARRAY_PARTITION variable=peakPhi complete dim=0
 #pragma HLS ARRAY_PARTITION variable=towerEta complete dim=0
@@ -316,7 +316,7 @@ bool merge_acrossphi(uint16_t peakEta[NClustersPerPhi][NCaloLayer2Phi],
 
       int nPhi = -1;
       if(preMergepeakPhi[nClus][tPhi] == 0 && tPhi != 0) nPhi = tPhi - 1;
-      if(preMergepeakPhi[nClus][tPhi] == NCaloLayer1Phi && tPhi != 27 ) nPhi = tPhi + 1;
+      if(preMergepeakPhi[nClus][tPhi] == NCaloLayer1Phi && tPhi != NCaloLayer2Phi-1 ) nPhi = tPhi + 1;
 
       //      std::cout<<"nClus: "<<nClus<<" tPhi:"<<tPhi<<" preMergepeakPhi[nClus][tPhi]: "<<preMergepeakPhi[nClus][tPhi]<<" nPhi"<<nPhi<<" preMergeclusterET[nClus][tPhi]:"<<preMergeclusterET[nClus][tPhi]<<" preMergeclusterET[nClus][nPhi]"<<preMergeclusterET[nClus][nPhi]<<std::endl;
 	    
@@ -359,7 +359,7 @@ bool mergeClusters(uint16_t ieta1, uint16_t iphi1, uint16_t icet1,
                    uint16_t *eta2, uint16_t *phi2, uint16_t *cet2) {
   // Check that the clusters are neighbors in eta or phi                                                                                                                  
 
-#pragma HLS PIPELINE II=8
+#pragma HLS PIPELINE II=6
                              
   if(ieta1 == ieta2) {
     if(icet1 > icet2) {
@@ -402,7 +402,7 @@ bool mergeClusters1(uint16_t ieta1, uint16_t iphi1, uint16_t icet1,
                    uint16_t *eta2, uint16_t *phi2, uint16_t *cet2) {
   // Check that the clusters are neighbors in eta or phi                                                                                                                  
 
-#pragma HLS PIPELINE II=8
+#pragma HLS PIPELINE II=6
                              
   if(iphi1 == iphi2) {
     if(icet1 > icet2) {
@@ -435,6 +435,3 @@ bool mergeClusters1(uint16_t ieta1, uint16_t iphi1, uint16_t icet1,
   }
   return true;
 }
-
-
-
